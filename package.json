@@ -1,0 +1,10 @@
+{
+  "name": "pizza-calc",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Hebrew RTL pizza-for-events calculator (MVP)",
+  "scripts": {
+    "test": "node --test *.test.js"
+  }
+}
