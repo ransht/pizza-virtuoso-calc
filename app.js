@@ -1,4 +1,14 @@
-import { calculatePizzas, defaultRates, ValidationError, APPETITE_FACTORS } from "./calc.js";
+import {
+  calculatePizzas,
+  defaultRates,
+  ValidationError,
+  APPETITE_FACTORS,
+  YOUNG_CHILD_UNITS,
+  CHILD_UNITS,
+  TEEN_ADULT_UNITS,
+} from "./calc.js";
+import { buildCombos, formatCombo, FLAVORS } from "./combos.js";
+import { createTrayViz, createCounter } from "./visuals.js";
 import { CONFIG } from "./config.js";
 import {
   savePlan,
@@ -117,6 +127,22 @@ const refs = {
   noPlansHint: el("noPlansHint"),
   savedPlansListHeading: el("savedPlansListHeading"),
   savedPlansList: el("savedPlansList"),
+  resultHead: el("resultHead"),
+  countDigits: el("countDigits"),
+  countUnit: el("countUnit"),
+  trayViz: el("trayViz"),
+  trayNote: el("trayNote"),
+  receipt: el("receipt"),
+  statGuests: el("statGuests"),
+  statNeeded: el("statNeeded"),
+  statCapacity: el("statCapacity"),
+  combosSection: el("combosSection"),
+  comboGrid: el("comboGrid"),
+  comboStatus: el("comboStatus"),
+  comboQuoteCta: el("comboQuoteCta"),
+  closingQuoteCta: el("closingQuoteCta"),
+  tuneBadge: el("tuneBadge"),
+  stickyPeek: el("stickyPeek"),
 };
 
 // ---------- state ----------
@@ -281,6 +307,11 @@ function buildExplanation(result, labels) {
 let lastResult = null;
 
 function render() {
+  computeAndRender();
+  paint();
+}
+
+function computeAndRender() {
   // event picker
   [...refs.eventGrid.children].forEach((btn) => {
     btn.setAttribute("aria-checked", String(btn.dataset.event === state.event));
@@ -417,19 +448,33 @@ function render() {
 
 function buildQuoteMessage(pizzas) {
   const pizzaWord = pizzas === 1 ? "מגש אחד" : `${pizzas} מגשים`;
-  return `היי ${CONFIG.quoteWhatsApp.contactName}, אני רוצה ${pizzaWord} לאירוע. תעשה לי מחיר טוב, אבל תמשיך באיכות הגבוהה שלכם 🍕`;
+  let message = `היי ${CONFIG.quoteWhatsApp.contactName}, אני רוצה ${pizzaWord} לאירוע. תעשה לי מחיר טוב, אבל תמשיך באיכות הגבוהה שלכם 🍕`;
+  // Only when the user explicitly picked a suggested split — otherwise the
+  // message stays exactly the one-liner the business already expects.
+  const combo = selectedCombo();
+  if (combo) message += `\nההרכב שחשבתי עליו: ${formatCombo(combo)}.`;
+  return message;
 }
 
 function updateCta(result) {
   const disabled = !result || result.totalParticipants === 0 || result.pizzas === 0;
   const pizzas = result?.pizzas ?? 0;
 
-  const quoteLabel = pizzas > 0 ? `בקשת הצעת מחיר ל-${pizzas} מגשים` : "בקשת הצעת מחיר בוואטסאפ";
+  const quoteLabel = pizzas === 1
+    ? "בקשת הצעת מחיר למגש אחד"
+    : pizzas > 0 ? `בקשת הצעת מחיר ל-${pizzas} מגשים` : "בקשת הצעת מחיר בוואטסאפ";
+  const shortLabel = "בקשת הצעת מחיר";
   const quoteHref = disabled
     ? "#"
     : `https://wa.me/${toWhatsAppNumber(CONFIG.quoteWhatsApp.localPhone)}?text=${encodeURIComponent(buildQuoteMessage(pizzas))}`;
-  for (const cta of [refs.quoteCta, refs.stickyQuoteCta]) {
-    cta.textContent = cta === refs.stickyQuoteCta ? "בקשת הצעת מחיר" : quoteLabel;
+  const labels = new Map([
+    [refs.quoteCta, quoteLabel],
+    [refs.closingQuoteCta, quoteLabel],
+    [refs.stickyQuoteCta, shortLabel],
+    [refs.comboQuoteCta, !disabled && selectedCombo() ? "שליחת ההרכב בוואטסאפ" : shortLabel],
+  ]);
+  for (const [cta, label] of labels) {
+    cta.querySelector(".btn-label").textContent = label;
     cta.setAttribute("aria-disabled", String(disabled));
     cta.href = quoteHref;
   }
@@ -440,32 +485,41 @@ function updateCta(result) {
 }
 
 // ---------- sticky mobile bar ----------
-// Shown only after the user has actually seen the result card and then
-// scrolled it out of view — never on first load before they've reached it.
+// A live read-out of the recommendation for whenever neither the big number
+// nor any other quote button is on screen — on a phone that includes the moments the
+// user is still tapping the steppers above the result card, which is exactly
+// when they most need to see the count react.
 let resultOutOfView = false;
-let hasSeenResult = false;
 let inputFocused = false;
 
 function updateStickyBar(result) {
-  refs.stickyCount.textContent = result && result.pizzas > 0 ? `${result.pizzas} מגשים` : "—";
+  refs.stickyCount.textContent = !result || result.pizzas === 0 ? "—" : result.pizzas === 1 ? "מגש אחד" : `${result.pizzas} מגשים`;
   refreshStickyVisibility();
 }
 
 function refreshStickyVisibility() {
-  const shouldShow = hasSeenResult && resultOutOfView && !inputFocused
+  const shouldShow = resultOutOfView && !inputFocused
     && lastResult && lastResult.pizzas > 0 && !lastResult.isOversized;
   refs.stickyBar.hidden = !shouldShow;
 }
 
+const stickyTargets = new Map(
+  [refs.resultHead, refs.quoteCta, refs.comboQuoteCta, refs.closingQuoteCta].map((target) => [target, false])
+);
 const stickyObserver = new IntersectionObserver(
-  ([entry]) => {
-    if (entry.isIntersecting) hasSeenResult = true;
-    resultOutOfView = !entry.isIntersecting;
+  (entries) => {
+    for (const entry of entries) stickyTargets.set(entry.target, entry.isIntersecting);
+    resultOutOfView = ![...stickyTargets.values()].some(Boolean);
     refreshStickyVisibility();
   },
   { threshold: 0 }
 );
-stickyObserver.observe(refs.resultCard);
+for (const target of stickyTargets.keys()) stickyObserver.observe(target);
+
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+refs.stickyPeek.addEventListener("click", () => {
+  refs.resultCard.scrollIntoView({ behavior: prefersReducedMotion.matches ? "auto" : "smooth", block: "start" });
+});
 
 document.addEventListener("focusin", (e) => {
   if (e.target.tagName === "INPUT") {
@@ -478,6 +532,137 @@ document.addEventListener("focusout", (e) => {
     inputFocused = false;
     refreshStickyVisibility();
   }
+});
+
+// ---------- result presentation (count, trays, receipt, combos) ----------
+// Everything below only draws what computeAndRender() already decided: the
+// screen-reader text, URL state and CTA links above stay the source of truth.
+const setCount = createCounter(refs.countDigits);
+const drawTrays = createTrayViz(refs.trayViz);
+let paintedPizzas = null;
+
+/** The result currently on screen, or null while pending / oversized. */
+function activeResult() {
+  if (refs.resultCard.classList.contains("is-pending")) return null;
+  if (!lastResult || lastResult.isOversized) return null;
+  return lastResult;
+}
+
+const formatUnits = (n) => String(Math.round(n * 10) / 10);
+
+function paint() {
+  const pending = refs.resultCard.classList.contains("is-pending");
+  const result = activeResult();
+  const oversized = !pending && !result;
+  const pizzas = result?.pizzas ?? 0;
+  const hasTrays = pizzas > 0;
+
+  refs.resultCard.classList.toggle("is-oversized", oversized);
+  refs.resultCard.classList.toggle("is-empty", !hasTrays);
+
+  const direction = result && paintedPizzas !== null ? Math.sign(pizzas - paintedPizzas) : 0;
+  setCount(pending ? "…" : oversized ? "—" : String(pizzas), direction);
+  if (direction !== 0) {
+    refs.stickyCount.classList.remove("is-bumped");
+    void refs.stickyCount.offsetWidth; // restart the animation
+    refs.stickyCount.classList.add("is-bumped");
+  }
+  paintedPizzas = result ? pizzas : null;
+  refs.countUnit.textContent = !result ? "" : pizzas === 1 ? "מגש" : "מגשים";
+
+  drawTrays(hasTrays ? result : null);
+  refs.trayViz.setAttribute("aria-label", `איור של ${pizzas === 1 ? "מגש פיצה אחד" : `${pizzas} מגשי פיצה`}`);
+
+  refs.trayNote.hidden = !hasTrays;
+  refs.receipt.hidden = !hasTrays;
+  if (hasTrays) {
+    const capacity = pizzas * result.servingUnitsPerPizza;
+    const spare = Math.floor(capacity - result.plannedDemand + 1e-9);
+    const where = pizzas === 1 ? "במגש" : "במגש האחרון";
+    refs.trayNote.textContent = spare >= 2
+      ? `נשארות כ-${spare} פרוסות רזרבה ${where}`
+      : spare === 1 ? `נשארת בערך פרוסה אחת רזרבה ${where}` : "הכמות מנוצלת עד הפרוסה האחרונה";
+    refs.statGuests.textContent = String(result.totalParticipants);
+    refs.statNeeded.textContent = formatUnits(result.plannedDemand);
+    refs.statCapacity.textContent = String(capacity);
+  }
+
+  const tweaks = [state.youngChildren > 0, state.otherMeal, state.extraPercent, Boolean(state.customRates)].filter(Boolean).length;
+  refs.tuneBadge.hidden = tweaks === 0;
+  refs.tuneBadge.textContent = tweaks === 1 ? "התאמה אחת" : `${tweaks} התאמות`;
+
+  renderCombos(result);
+}
+
+// ---------- recommended order combinations ----------
+// A suggested split of the calculated tray count between flavors. Picking one
+// is optional and only ever adds a line to the WhatsApp quote request.
+let selectedComboId = null;
+let combosKey = "";
+
+function combosFor(result) {
+  if (!result || result.pizzas <= 0) return [];
+  const childShare = state.childrenTotal / (result.totalParticipants || 1);
+  return buildCombos(result.pizzas, { childShare });
+}
+
+function selectedCombo() {
+  if (!selectedComboId) return null;
+  return combosFor(activeResult()).find((c) => c.id === selectedComboId) ?? null;
+}
+
+function comboCardHtml(combo) {
+  const bar = combo.items
+    .map((i) => `<i data-flavor="${i.flavor}" style="flex-grow:${i.count}"></i>`)
+    .join("");
+  const items = combo.items
+    .map((i) => (i.flavor === "half"
+      ? `<span class="combo-item" data-flavor="half">${FLAVORS.half}</span>`
+      : `<span class="combo-item" data-flavor="${i.flavor}"><b>${i.count}</b> ${FLAVORS[i.flavor]}</span>`))
+    .join(" ");
+  return `
+    <button type="button" class="combo-card" data-combo="${combo.id}" aria-pressed="${combo.id === selectedComboId}">
+      <span class="combo-check" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>
+      <span class="combo-name">${combo.name}</span>
+      <span class="combo-note">${combo.note}</span>
+      <span class="combo-bar" aria-hidden="true">${bar}</span>
+      <span class="combo-items">${items}</span>
+    </button>`;
+}
+
+function refreshComboSelection() {
+  const combo = selectedCombo();
+  refs.comboGrid.querySelectorAll(".combo-card").forEach((card) => {
+    card.setAttribute("aria-pressed", String(card.dataset.combo === selectedComboId));
+  });
+  const status = combo
+    ? `ההרכב ״${combo.name}״ יצורף לבקשת הצעת המחיר: ${formatCombo(combo)}.`
+    : "ההרכבים הם הצעה בלבד — את הטעמים הסופיים סוגרים מול הפיצריה.";
+  if (refs.comboStatus.textContent !== status) refs.comboStatus.textContent = status;
+}
+
+function renderCombos(result) {
+  const combos = combosFor(result);
+  refs.combosSection.hidden = combos.length === 0;
+  if (!combos.some((c) => c.id === selectedComboId)) selectedComboId = null;
+
+  // Rebuild the cards only when the suggestions themselves changed, so a
+  // re-render triggered elsewhere never steals focus from a combo button.
+  const key = combos.map((c) => `${c.id}=${formatCombo(c)}`).join(";");
+  if (key !== combosKey) {
+    combosKey = key;
+    refs.comboGrid.innerHTML = combos.map(comboCardHtml).join("");
+  }
+  refreshComboSelection();
+}
+
+refs.comboGrid.addEventListener("click", (e) => {
+  const card = e.target.closest(".combo-card");
+  if (!card) return;
+  selectedComboId = card.dataset.combo === selectedComboId ? null : card.dataset.combo;
+  track("combo_select", { combo: selectedComboId ?? "none", pizzas: lastResult?.pizzas ?? 0 });
+  refreshComboSelection();
+  updateCta(activeResult());
 });
 
 // ---------- share / copy ----------
@@ -509,11 +694,15 @@ refs.shareBtn.addEventListener("click", async () => {
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank", "noopener");
 });
 
+let copyResetTimer;
 refs.copyBtn.addEventListener("click", async () => {
   const text = buildShareText();
   try {
     await navigator.clipboard.writeText(text);
     track("copy_success", { type: "summary" });
+    refs.copyBtn.textContent = "הסיכום הועתק ✓";
+    clearTimeout(copyResetTimer);
+    copyResetTimer = setTimeout(() => { refs.copyBtn.textContent = "העתקת סיכום"; }, 2200);
   } catch {
     refs.copyFallback.hidden = false;
     refs.copyFallback.value = text;
@@ -526,10 +715,12 @@ refs.quoteCta.addEventListener("click", (e) => {
   if (refs.quoteCta.getAttribute("aria-disabled") === "true") e.preventDefault();
   track("quote_request_click", { pizzas: lastResult?.pizzas ?? 0 });
 });
-refs.stickyQuoteCta.addEventListener("click", (e) => {
-  if (refs.stickyQuoteCta.getAttribute("aria-disabled") === "true") e.preventDefault();
-  track("quote_request_click", { pizzas: lastResult?.pizzas ?? 0, source: "sticky" });
-});
+for (const [cta, source] of [[refs.stickyQuoteCta, "sticky"], [refs.comboQuoteCta, "combos"], [refs.closingQuoteCta, "closing"]]) {
+  cta.addEventListener("click", (e) => {
+    if (cta.getAttribute("aria-disabled") === "true") e.preventDefault();
+    track("quote_request_click", { pizzas: lastResult?.pizzas ?? 0, source });
+  });
+}
 refs.orderCta.addEventListener("click", () => {
   track("order_click", { target: "menu", pizzas: lastResult?.pizzas ?? 0 });
 });
@@ -787,6 +978,36 @@ refs.eventGrid.querySelectorAll(".event-card").forEach((btn) => {
   });
 });
 
+// Arrow keys move between the options of a radio group, as the ARIA radio
+// pattern expects. Every option also stays reachable with Tab, as before.
+// Right/Up go to the previous option because the page is laid out RTL.
+function bindArrowKeys(group) {
+  const steps = { ArrowRight: -1, ArrowUp: -1, ArrowLeft: 1, ArrowDown: 1 };
+  group.addEventListener("keydown", (e) => {
+    const step = steps[e.key];
+    if (!step) return;
+    const options = [...group.querySelectorAll('[role="radio"]')];
+    const index = options.indexOf(document.activeElement);
+    if (index === -1) return;
+    e.preventDefault();
+    const next = options[(index + step + options.length) % options.length];
+    next.focus();
+    next.click();
+  });
+}
+bindArrowKeys(refs.eventGrid);
+bindArrowKeys(refs.appetiteGroup);
+
+// A small "tick" on the number a stepper button just changed.
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".stepper-btn");
+  if (!btn) return;
+  const input = el(btn.dataset.target);
+  input.classList.remove("is-ticked");
+  void input.offsetWidth; // restart the animation on rapid taps
+  input.classList.add("is-ticked");
+});
+
 // ---------- examples table ----------
 function renderExamplesTable() {
   const counts = [10, 20, 30, 40];
@@ -848,6 +1069,12 @@ window.addEventListener("hashchange", () => applyLocationState(false));
 
 function boot() {
   refs.brandName.textContent = CONFIG.brandName;
+  // The "how we calculate" figures come straight from the model constants,
+  // so the explanation can never drift from what the calculator really does.
+  el("rateYoung").textContent = String(YOUNG_CHILD_UNITS);
+  el("rateChild").textContent = String(CHILD_UNITS);
+  el("rateAdult").textContent = String(TEEN_ADULT_UNITS);
+  el("rateTray").textContent = String(CONFIG.product.servingUnitsPerPizza);
   renderExamplesTable();
   renderSavedPlans();
   applyLocationState(true);

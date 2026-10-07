@@ -7,10 +7,12 @@
 <meta name="description" content="מחשבון פיצה בעברית: כמה פיצות להזמין ליום הולדת, למסיבת כיתה או לאירוע במשרד. מחשבים לפי ילדים ומבוגרים ומקבלים הצעת מחיר מפיצה וירטואוז — פיצריה כשרה בראשון לציון.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://calc.pizzavirtuoso.co.il/">
+<meta name="theme-color" content="#1c1714">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="images/hero-pizza.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;900&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 
 <meta property="og:type" content="website">
@@ -96,278 +98,433 @@
 
 <a class="skip-link" href="#main-content">דלגו לתוכן הראשי</a>
 
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+  <symbol id="i-birthday" viewBox="0 0 24 24"><path d="M3.5 20.5h17M5 20.5v-6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6"/><path d="M5 16.4c1.2 0 1.2 1 2.3 1s1.2-1 2.4-1 1.1 1 2.3 1 1.2-1 2.3-1 1.2 1 2.4 1 1.1-1 2.3-1"/><path d="M12 12.5V8.6"/><path d="M12 6.2c1-1.1 1-2 0-3.2-1 1.200-1 2.100 0 3.200Z"/></symbol>
+  <symbol id="i-school" viewBox="0 0 24 24"><path d="M6 21V11a6 6 0 0 1 12 0v10Z"/><path d="M9 5.600V4.500a3 3 0 0 1 6 0v1.100"/><path d="M9 14h6v4H9z"/><path d="M9.500 10h5"/></symbol>
+  <symbol id="i-friends" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.870"/><path d="M16 3.130a4 4 0 0 1 0 7.750"/></symbol>
+  <symbol id="i-office" viewBox="0 0 24 24"><rect x="2.500" y="7" width="19" height="13.500" rx="2"/><path d="M16 20.500V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v15.500"/><path d="M2.500 13h19"/></symbol>
+  <symbol id="i-slice" viewBox="0 0 24 24"><path d="M12 21.500 4 6.200a17 17 0 0 1 16 0Z"/><circle cx="10.500" cy="10" r="1.100"/><circle cx="13.400" cy="13.500" r="1.100"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.900 20A9 9 0 1 0 4 16.100L2 22Z"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.600 13.500 6.800 4M15.400 6.500l-6.800 4"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12.500H6Z"/><path d="M9 8V6.500a3 3 0 0 1 6 0V8"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.500 4.500 4.500L19 7.500"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></symbol>
+  <symbol id="i-pizza" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.500"/><path d="M12 2.500v19M2.500 12h19M5.300 5.300l13.400 13.400M18.700 5.300 5.300 18.700"/></symbol>
+</svg>
+
 <header class="site-header">
   <a class="brand" href="https://pizzavirtuoso.co.il" target="_blank" rel="noopener">
-    <img src="logo.svg" alt="" width="32" height="32" class="brand-logo">
+    <img src="logo.svg" alt="" width="36" height="36" class="brand-logo">
     <span id="brandName">פיצה וירטואוז</span>
   </a>
   <span class="header-kicker">תכנון לאירוע</span>
 </header>
 
-<main class="page" id="main-content">
+<main id="main-content">
 
   <section class="intro">
-    <div class="intro-text">
+    <img class="intro-photo" src="images/hero-pizza.webp" width="1672" height="941" fetchpriority="high" decoding="async" alt="פיצה טרייה עם מוצרלה, פטריות ובזיליקום ליד תנור חם — פיצה וירטואוז">
+    <div class="intro-text wrap">
+      <p class="intro-kicker">מחשבון פיצה לאירועים</p>
       <h1>כמה פיצות להזמין?</h1>
       <p class="subtitle" id="subtitle">ליום הולדת, למסיבת כיתה או לערב עם חברים — מחשבים כמות וממשיכים לתכנון ההזמנה.</p>
-    </div>
-    <img class="intro-photo" src="images/hero-pizza.webp" width="1672" height="941" alt="פיצה טרייה עם מוצרלה, פטריות ובזיליקום ליד תנור חם — פיצה וירטואוז">
-  </section>
-
-  <p class="banner banner-example" id="exampleBanner" hidden>
-    זו דוגמה ל-20 ילדים ו-4 מלווים — התאימו אותה לאירוע שלכם ברגע ששינוי ראשון נעשה.
-  </p>
-  <p class="banner banner-shared" id="sharedBanner" hidden>
-    פתחתם תכנון משותף — אפשר להתאים אותו לאירוע שלכם.
-  </p>
-  <p class="banner banner-error" id="linkErrorBanner" hidden>
-    הקישור לא היה תקין, אז טענו ברירת מחדל במקומו.
-  </p>
-
-  <section class="event-picker" aria-label="סוג האירוע">
-    <div class="event-grid" role="radiogroup" aria-label="בחירת סוג אירוע" id="eventGrid">
-      <button type="button" class="event-card" data-event="birthday" role="radio" aria-checked="true">
-        <span class="event-emoji" aria-hidden="true">🎂</span><span>יום הולדת</span>
-      </button>
-      <button type="button" class="event-card" data-event="school" role="radio" aria-checked="false">
-        <span class="event-emoji" aria-hidden="true">🎨</span><span>מסיבת כיתה</span>
-      </button>
-      <button type="button" class="event-card" data-event="friends" role="radio" aria-checked="false">
-        <span class="event-emoji" aria-hidden="true">🎉</span><span>חברים ומשפחה</span>
-      </button>
-      <button type="button" class="event-card" data-event="office" role="radio" aria-checked="false">
-        <span class="event-emoji" aria-hidden="true">🏢</span><span>משרד</span>
-      </button>
+      <ul class="intro-facts">
+        <li>פיצריה כשרה</li>
+        <li>ראשון לציון</li>
+        <li>הצעת מחיר בוואטסאפ</li>
+      </ul>
     </div>
   </section>
 
-  <div class="workspace">
+  <div class="wrap">
+    <div class="workspace">
 
-    <section class="primary-fields" aria-label="מספר משתתפים ותיאבון">
+      <section class="primary-fields panel" aria-label="פרטי האירוע">
 
-      <div class="field-group" data-field-group="children">
-        <label class="field-label" for="childrenInput" id="childrenLabel">ילדים</label>
-        <div class="stepper">
-          <button type="button" class="stepper-btn" data-target="childrenInput" data-action="dec" aria-label="הפחתת מספר הילדים">−</button>
-          <input type="number" inputmode="numeric" class="stepper-input" id="childrenInput" min="0" step="1" value="20">
-          <button type="button" class="stepper-btn" data-target="childrenInput" data-action="inc" aria-label="הוספת ילד">+</button>
-        </div>
-        <p class="field-error" id="childrenError" role="alert" hidden></p>
-      </div>
+        <p class="banner banner-example" id="exampleBanner" hidden>
+          זו דוגמה ל-20 ילדים ו-4 מלווים — התאימו אותה לאירוע שלכם ברגע ששינוי ראשון נעשה.
+        </p>
+        <p class="banner banner-shared" id="sharedBanner" hidden>
+          פתחתם תכנון משותף — אפשר להתאים אותו לאירוע שלכם.
+        </p>
+        <p class="banner banner-error" id="linkErrorBanner" hidden>
+          הקישור לא היה תקין, אז טענו ברירת מחדל במקומו.
+        </p>
 
-      <div class="field-group" data-field-group="teensAndAdults">
-        <label class="field-label" for="teensAdultsInput" id="teensAdultsLabel">נוער ומבוגרים</label>
-        <div class="stepper">
-          <button type="button" class="stepper-btn" data-target="teensAdultsInput" data-action="dec" aria-label="הפחתת מספר הנוער והמבוגרים">−</button>
-          <input type="number" inputmode="numeric" class="stepper-input" id="teensAdultsInput" min="0" step="1" value="4">
-          <button type="button" class="stepper-btn" data-target="teensAdultsInput" data-action="inc" aria-label="הוספת נוער או מבוגר">+</button>
-        </div>
-        <p class="field-error" id="teensAdultsError" role="alert" hidden></p>
-      </div>
-
-      <div class="field-group">
-        <span class="field-label" id="appetiteLabel">רמת תיאבון</span>
-        <div class="segmented" role="radiogroup" aria-labelledby="appetiteLabel" id="appetiteGroup">
-          <button type="button" class="segmented-btn" data-value="light" role="radio" aria-checked="false">קל 🙂</button>
-          <button type="button" class="segmented-btn" data-value="normal" role="radio" aria-checked="true">רגיל 😋</button>
-          <button type="button" class="segmented-btn" data-value="large" role="radio" aria-checked="false">גדול 🔥</button>
-        </div>
-      </div>
-
-      <p class="oversized-notice" id="oversizedNotice" hidden>
-        לאירוע גדול נדרש תיאום. שמרנו את הקלט שהזנתם, אבל אין המלצת כמות אוטומטית מעל 100 משתתפים.
-      </p>
-    </section>
-
-    <section class="result-panel" aria-label="תוצאת החישוב">
-      <div class="result-card" id="resultCard">
-        <p class="active-plan-chip" id="activePlanChip" hidden></p>
-        <p class="result-number" id="resultNumber" aria-live="polite">7 מגשים</p>
-        <p class="result-summary" id="resultSummary">ל-20 ילדים ו-4 מלווים</p>
-        <p class="result-assumptions" id="resultAssumptions">לפי תיאבון רגיל, בלי אוכל משביע נוסף.</p>
-
-        <details class="explanation">
-          <summary>איך חישבנו?</summary>
-          <p id="explanationText"></p>
-        </details>
-
-        <label class="toggle-row extra-toggle">
-          <input type="checkbox" id="extraPercentInput">
-          <span id="extraPercentLabel">להוסיף 10% לתכנון</span>
-        </label>
-
-        <div class="price-block" id="priceBlock" hidden>
-          <p id="priceLine"></p>
-          <p id="perGuestLine"></p>
-        </div>
-
-        <div class="cta-stack">
-          <div class="cta-row">
-            <a class="btn btn-primary" id="quoteCta" href="#" target="_blank" rel="noopener">בקשת הצעת מחיר בוואטסאפ</a>
-          </div>
-          <div class="cta-row">
-            <button type="button" class="btn btn-secondary" id="shareBtn">שיתוף התכנון</button>
-            <a class="btn btn-secondary" id="orderCta" href="#" target="_blank" rel="noopener">לאתר ההזמנות</a>
+        <div class="step event-picker">
+          <h2 class="step-title" id="eventLabel"><span class="step-num" aria-hidden="true">1</span>איזה אירוע?</h2>
+          <div class="event-grid" role="radiogroup" aria-labelledby="eventLabel" id="eventGrid">
+            <button type="button" class="event-card" data-event="birthday" role="radio" aria-checked="true">
+              <span class="event-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-birthday"/></svg></span>
+              <span class="event-name">יום הולדת</span>
+              <span class="event-hint">ילדים ומלווים</span>
+            </button>
+            <button type="button" class="event-card" data-event="school" role="radio" aria-checked="false">
+              <span class="event-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-school"/></svg></span>
+              <span class="event-name">מסיבת כיתה</span>
+              <span class="event-hint">כיתה שלמה</span>
+            </button>
+            <button type="button" class="event-card" data-event="friends" role="radio" aria-checked="false">
+              <span class="event-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-friends"/></svg></span>
+              <span class="event-name">חברים ומשפחה</span>
+              <span class="event-hint">ערב ביחד</span>
+            </button>
+            <button type="button" class="event-card" data-event="office" role="radio" aria-checked="false">
+              <span class="event-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-office"/></svg></span>
+              <span class="event-name">משרד</span>
+              <span class="event-hint">צוות ואורחים</span>
+            </button>
           </div>
         </div>
-        <button type="button" class="btn btn-link" id="copyBtn">העתקת סיכום</button>
-        <textarea class="copy-fallback" id="copyFallback" readonly hidden aria-label="סיכום להעתקה ידנית"></textarea>
 
-        <div class="saved-plans" id="savedPlansSection">
-          <h2 class="saved-plans-heading">
-            <span class="saved-plans-icon" aria-hidden="true">💾</span>
-            שמירת התכנון
-          </h2>
-          <p class="field-hint">
-            נשמר במכשיר הזה בלבד — לא מסתנכרן בין מכשירים ולא נשלח לשום מקום.
-          </p>
+        <div class="step">
+          <h2 class="step-title"><span class="step-num" aria-hidden="true">2</span>כמה אוכלים?</h2>
 
-          <p class="banner banner-error" id="storageUnavailableNotice" hidden>
-            אחסון מקומי אינו זמין בדפדפן הזה כרגע (למשל גלישה פרטית שחוסמת שמירה), כך שלא ניתן לשמור תכניות במכשיר הזה.
-          </p>
-
-          <form id="savePlanForm" class="save-plan-form">
-            <label class="field-label" for="planNameInput">שם לתכנית (למשל: יום הולדת לדניאלה)</label>
-            <div class="save-plan-row">
-              <input type="text" id="planNameInput" maxlength="60" placeholder="שם התכנית" autocomplete="off">
-              <button type="submit" class="btn btn-save" id="savePlanBtn">
-                <span aria-hidden="true">💾</span> שמירת התכנון
-              </button>
+          <div class="field-group person-row" data-field-group="children">
+            <div class="person-meta">
+              <label class="field-label" for="childrenInput" id="childrenLabel">ילדים</label>
+              <span class="field-sub" id="childrenSub">עד גיל 12</span>
             </div>
-            <p class="save-plan-status" id="savePlanStatus" role="status" aria-live="polite"></p>
-          </form>
+            <div class="stepper">
+              <button type="button" class="stepper-btn" data-target="childrenInput" data-action="dec" aria-label="הפחתת מספר הילדים">−</button>
+              <input type="number" inputmode="numeric" class="stepper-input" id="childrenInput" min="0" step="1" value="20" aria-describedby="childrenSub">
+              <button type="button" class="stepper-btn" data-target="childrenInput" data-action="inc" aria-label="הוספת ילד">+</button>
+            </div>
+            <p class="field-error" id="childrenError" role="alert" hidden></p>
+          </div>
 
-          <div class="saved-plans-list-wrap">
-            <h3 class="saved-plans-list-heading" id="savedPlansListHeading" hidden>התכניות השמורות שלי</h3>
-            <p class="field-hint" id="noPlansHint">עדיין לא שמרתם תכניות במכשיר הזה.</p>
-            <ul class="saved-plans-list" id="savedPlansList"></ul>
+          <div class="field-group person-row" data-field-group="teensAndAdults">
+            <div class="person-meta">
+              <label class="field-label" for="teensAdultsInput" id="teensAdultsLabel">נוער ומבוגרים</label>
+              <span class="field-sub" id="teensAdultsSub">גיל 13 ומעלה</span>
+            </div>
+            <div class="stepper">
+              <button type="button" class="stepper-btn" data-target="teensAdultsInput" data-action="dec" aria-label="הפחתת מספר הנוער והמבוגרים">−</button>
+              <input type="number" inputmode="numeric" class="stepper-input" id="teensAdultsInput" min="0" step="1" value="4" aria-describedby="teensAdultsSub">
+              <button type="button" class="stepper-btn" data-target="teensAdultsInput" data-action="inc" aria-label="הוספת נוער או מבוגר">+</button>
+            </div>
+            <p class="field-error" id="teensAdultsError" role="alert" hidden></p>
           </div>
         </div>
+
+        <div class="step">
+          <h2 class="step-title" id="appetiteLabel"><span class="step-num" aria-hidden="true">3</span>רמת תיאבון</h2>
+          <div class="segmented" role="radiogroup" aria-labelledby="appetiteLabel" id="appetiteGroup">
+            <button type="button" class="segmented-btn" data-value="light" role="radio" aria-checked="false">
+              <span class="appetite-icons" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-slice"/></svg></span>
+              <span class="appetite-name">קל</span>
+              <span class="appetite-hint">אוכלים מעט</span>
+            </button>
+            <button type="button" class="segmented-btn" data-value="normal" role="radio" aria-checked="true">
+              <span class="appetite-icons" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-slice"/></svg><svg viewBox="0 0 24 24"><use href="#i-slice"/></svg></span>
+              <span class="appetite-name">רגיל</span>
+              <span class="appetite-hint">ארוחה רגילה</span>
+            </button>
+            <button type="button" class="segmented-btn" data-value="large" role="radio" aria-checked="false">
+              <span class="appetite-icons" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-slice"/></svg><svg viewBox="0 0 24 24"><use href="#i-slice"/></svg><svg viewBox="0 0 24 24"><use href="#i-slice"/></svg></span>
+              <span class="appetite-name">גדול</span>
+              <span class="appetite-hint">רעבים במיוחד</span>
+            </button>
+          </div>
+        </div>
+
+        <p class="oversized-notice" id="oversizedNotice" hidden>
+          לאירוע גדול נדרש תיאום. שמרנו את הקלט שהזנתם, אבל אין המלצת כמות אוטומטית מעל 100 משתתפים.
+        </p>
+      </section>
+
+      <section class="result-panel" aria-label="תוצאת החישוב">
+        <div class="result-card" id="resultCard">
+
+          <div class="ticket-head" id="resultHead">
+            <p class="ticket-kicker">ההמלצה שלנו</p>
+            <p class="active-plan-chip" id="activePlanChip" hidden></p>
+
+            <p class="result-number visually-hidden" id="resultNumber" aria-live="polite">7 מגשים</p>
+            <p class="count" aria-hidden="true">
+              <span class="count-digits" id="countDigits"><span class="count-val">7</span></span>
+              <span class="count-unit" id="countUnit">מגשים</span>
+            </p>
+
+            <p class="result-summary" id="resultSummary">ל-20 ילדים ו-4 מלווים</p>
+            <p class="result-assumptions" id="resultAssumptions">לפי תיאבון רגיל, בלי אוכל משביע נוסף.</p>
+          </div>
+
+          <div class="tray-viz" id="trayViz" role="img" aria-label="איור של 7 מגשי פיצה" data-size="m"></div>
+          <p class="tray-note" id="trayNote"></p>
+
+          <dl class="receipt" id="receipt">
+            <div><dt>אורחים</dt><dd id="statGuests">24</dd></div>
+            <div><dt>פרוסות לפי החישוב</dt><dd id="statNeeded">52</dd></div>
+            <div><dt>פרוסות במגשים</dt><dd id="statCapacity">56</dd></div>
+          </dl>
+
+          <div class="ticket-tear" aria-hidden="true"></div>
+
+          <div class="price-block" id="priceBlock" hidden>
+            <p id="priceLine"></p>
+            <p id="perGuestLine"></p>
+          </div>
+
+          <div class="cta-stack">
+            <div class="cta-row">
+              <a class="btn btn-primary" id="quoteCta" href="#" target="_blank" rel="noopener">
+                <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat"/></svg>
+                <span class="btn-label">בקשת הצעת מחיר בוואטסאפ</span>
+              </a>
+            </div>
+            <p class="cta-note" id="ctaNote">ללא התחייבות — המחיר הסופי נסגר ישירות מול הפיצריה.</p>
+            <div class="cta-row">
+              <button type="button" class="btn btn-secondary" id="shareBtn">
+                <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-share"/></svg>
+                <span class="btn-label">שיתוף התכנון</span>
+              </button>
+              <a class="btn btn-secondary" id="orderCta" href="#" target="_blank" rel="noopener">
+                <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bag"/></svg>
+                <span class="btn-label">לאתר ההזמנות</span>
+              </a>
+            </div>
+          </div>
+          <button type="button" class="btn btn-link" id="copyBtn">העתקת סיכום</button>
+          <textarea class="copy-fallback" id="copyFallback" readonly hidden aria-label="סיכום להעתקה ידנית"></textarea>
+
+          <details class="explanation">
+            <summary>איך חישבנו?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <p id="explanationText"></p>
+          </details>
+        </div>
+      </section>
+
+      <section class="combos" id="combosSection" aria-labelledby="combosHeading">
+        <div class="combos-head">
+          <h2 id="combosHeading">הרכבים מומלצים להזמנה</h2>
+          <p class="combos-lead" id="combosLead">כך אפשר לחלק את המגשים בין הטעמים. בחרו הרכב והוא יצורף לבקשת הצעת המחיר.</p>
+        </div>
+        <div class="combo-grid" id="comboGrid" role="group" aria-labelledby="combosHeading"></div>
+        <div class="combos-foot">
+          <p class="combo-status" id="comboStatus" role="status">ההרכבים הם הצעה בלבד — את הטעמים הסופיים סוגרים מול הפיצריה.</p>
+          <a class="btn btn-primary btn-compact" id="comboQuoteCta" href="#" target="_blank" rel="noopener">
+            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat"/></svg>
+            <span class="btn-label">בקשת הצעת מחיר</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="advanced-fields">
+        <details id="advancedDetails">
+          <summary>
+            <svg class="summary-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-sliders"/></svg>
+            <span class="summary-text">
+              <span class="summary-title">לדייק את התכנון</span>
+              <span class="summary-sub">גיל הילדים, מנה נוספת, רזרבה ופרוסות לאדם</span>
+            </span>
+            <span class="tune-badge" id="tuneBadge" hidden></span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chevron"/></svg>
+          </summary>
+
+          <div class="advanced-body">
+            <div class="field-group person-row">
+              <div class="person-meta">
+                <label class="field-label" for="youngChildrenInput">מתוך הילדים, כמה בגיל 3–6</label>
+                <span class="field-sub field-hint" id="youngChildrenHint">אופציונלי. הכמות הזו היא חלק מ״ילדים״ למעלה, לא בנוסף להם.</span>
+              </div>
+              <div class="stepper">
+                <button type="button" class="stepper-btn" data-target="youngChildrenInput" data-action="dec" aria-label="הפחתת מספר הילדים בגיל 3 עד 6">−</button>
+                <input type="number" inputmode="numeric" class="stepper-input" id="youngChildrenInput" min="0" step="1" value="0" aria-describedby="youngChildrenHint">
+                <button type="button" class="stepper-btn" data-target="youngChildrenInput" data-action="inc" aria-label="הוספת ילד בגיל 3 עד 6">+</button>
+              </div>
+              <p class="field-error" id="youngChildrenError" role="alert" hidden></p>
+            </div>
+
+            <label class="toggle-row">
+              <input type="checkbox" id="otherMealInput">
+              <span>יש גם מנה משביעה נוספת (למשל פסטה)</span>
+            </label>
+
+            <label class="toggle-row extra-toggle">
+              <input type="checkbox" id="extraPercentInput">
+              <span id="extraPercentLabel">להוסיף 10% לתכנון</span>
+            </label>
+
+            <label class="toggle-row">
+              <input type="checkbox" id="customRatesToggle">
+              <span>להתאים ידנית כמה פרוסות כל אחד אוכל</span>
+            </label>
+
+            <div class="custom-rates" id="customRatesFields" hidden>
+              <p class="field-hint">
+                ברירת המחדל מבוססת על רמת התיאבון שנבחרה למעלה. ברגע שמתאימים כאן — רמת התיאבון מפסיקה להשפיע על החישוב, כי המספרים כאן כבר משקפים בדיוק כמה כל אחד אוכל.
+              </p>
+
+              <div class="rate-grid">
+                <div class="field-group">
+                  <label class="field-label" for="youngChildRateInput">פרוסות לילד בגיל 3–6</label>
+                  <input type="number" inputmode="decimal" class="rate-input" id="youngChildRateInput" min="0" step="0.5">
+                  <p class="field-error" id="youngChildRateError" role="alert" hidden></p>
+                </div>
+
+                <div class="field-group">
+                  <label class="field-label" for="childRateInput">פרוסות לילד</label>
+                  <input type="number" inputmode="decimal" class="rate-input" id="childRateInput" min="0" step="0.5">
+                  <p class="field-error" id="childRateError" role="alert" hidden></p>
+                </div>
+
+                <div class="field-group">
+                  <label class="field-label" for="teenAdultRateInput">פרוסות לנוער/מבוגר</label>
+                  <input type="number" inputmode="decimal" class="rate-input" id="teenAdultRateInput" min="0" step="0.5">
+                  <p class="field-error" id="teenAdultRateError" role="alert" hidden></p>
+                </div>
+              </div>
+
+              <button type="button" class="btn-link" id="resetRatesBtn">איפוס לברירת המחדל</button>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section class="saved-plans" id="savedPlansSection" aria-labelledby="savedPlansHeading">
+        <h2 class="saved-plans-heading" id="savedPlansHeading">שמירת התכנון</h2>
+        <p class="field-hint">
+          נשמר במכשיר הזה בלבד — לא מסתנכרן בין מכשירים ולא נשלח לשום מקום.
+        </p>
+
+        <p class="banner banner-error" id="storageUnavailableNotice" hidden>
+          אחסון מקומי אינו זמין בדפדפן הזה כרגע (למשל גלישה פרטית שחוסמת שמירה), כך שלא ניתן לשמור תכניות במכשיר הזה.
+        </p>
+
+        <form id="savePlanForm" class="save-plan-form">
+          <label class="field-label" for="planNameInput">שם לתכנית (למשל: יום הולדת לדניאלה)</label>
+          <div class="save-plan-row">
+            <input type="text" id="planNameInput" maxlength="60" placeholder="שם התכנית" autocomplete="off">
+            <button type="submit" class="btn btn-save" id="savePlanBtn">שמירת התכנון</button>
+          </div>
+          <p class="save-plan-status" id="savePlanStatus" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="saved-plans-list-wrap">
+          <h3 class="saved-plans-list-heading" id="savedPlansListHeading" hidden>התכניות השמורות שלי</h3>
+          <p class="field-hint" id="noPlansHint">עדיין לא שמרתם תכניות במכשיר הזה.</p>
+          <ul class="saved-plans-list" id="savedPlansList"></ul>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="wrap content">
+
+    <section class="info-section">
+      <p class="section-kicker">השיטה</p>
+      <h2>איך מחשבים את הכמות?</h2>
+      <p class="lead">מחשבים הערכת כמות לפי מספר המשתתפים והתיאבון, ומעגלים למגש שלם. גודל המגש משפיע; מספר החיתוכים לבדו לא.</p>
+
+      <ul class="rate-cards" aria-label="כמה פרוסות מחשבים לכל משתתף בתיאבון רגיל">
+        <li><strong id="rateYoung">1.5</strong><span>פרוסות לילד בגיל 3–6</span></li>
+        <li><strong id="rateChild">2</strong><span>פרוסות לילד</span></li>
+        <li><strong id="rateAdult">3</strong><span>פרוסות לנוער או מבוגר</span></li>
+        <li><strong id="rateTray">8</strong><span>פרוסות במגש אחד</span></li>
+      </ul>
+
+      <h3>דוגמאות</h3>
+      <div class="examples-table-wrap">
+        <table class="examples-table" id="examplesTable">
+          <thead>
+            <tr><th scope="col">משתתפים</th><th scope="col">תיאבון</th><th scope="col">מגשים מומלצים</th></tr>
+          </thead>
+          <tbody id="examplesTableBody"></tbody>
+        </table>
       </div>
     </section>
 
-    <section class="advanced-fields">
-      <details id="advancedDetails">
-        <summary>לדייק את התכנון</summary>
-
-        <div class="field-group">
-          <label class="field-label" for="youngChildrenInput">מתוך הילדים, כמה בגיל 3–6</label>
-          <div class="stepper">
-            <button type="button" class="stepper-btn" data-target="youngChildrenInput" data-action="dec" aria-label="הפחתת מספר הילדים בגיל 3 עד 6">−</button>
-            <input type="number" inputmode="numeric" class="stepper-input" id="youngChildrenInput" min="0" step="1" value="0">
-            <button type="button" class="stepper-btn" data-target="youngChildrenInput" data-action="inc" aria-label="הוספת ילד בגיל 3 עד 6">+</button>
-          </div>
-          <p class="field-hint">אופציונלי. הכמות הזו היא חלק מ״ילדים״ למעלה, לא בנוסף להם.</p>
-          <p class="field-error" id="youngChildrenError" role="alert" hidden></p>
+    <section class="info-section">
+      <p class="section-kicker">טוב לדעת</p>
+      <h3 class="faq-heading">שאלות נפוצות</h3>
+      <dl class="faq">
+        <div>
+          <dt>האם מספר החיתוכים במגש משנה את הכמות?</dt>
+          <dd>לא. חיתוך אותו מגש ל-8 או ל-16 חלקים לא מגדיל את כמות האוכל. גודל המגש הוא שקובע.</dd>
         </div>
-
-        <label class="toggle-row">
-          <input type="checkbox" id="otherMealInput">
-          <span>יש גם מנה משביעה נוספת (למשל פסטה)</span>
-        </label>
-
-        <label class="toggle-row">
-          <input type="checkbox" id="customRatesToggle">
-          <span>להתאים ידנית כמה פרוסות כל אחד אוכל</span>
-        </label>
-
-        <div class="custom-rates" id="customRatesFields" hidden>
-          <p class="field-hint">
-            ברירת המחדל מבוססת על רמת התיאבון שנבחרה למעלה. ברגע שמתאימים כאן — רמת התיאבון מפסיקה להשפיע על החישוב, כי המספרים כאן כבר משקפים בדיוק כמה כל אחד אוכל.
-          </p>
-
-          <div class="field-group">
-            <label class="field-label" for="youngChildRateInput">פרוסות לילד בגיל 3–6</label>
-            <input type="number" inputmode="decimal" class="rate-input" id="youngChildRateInput" min="0" step="0.5">
-            <p class="field-error" id="youngChildRateError" role="alert" hidden></p>
-          </div>
-
-          <div class="field-group">
-            <label class="field-label" for="childRateInput">פרוסות לילד</label>
-            <input type="number" inputmode="decimal" class="rate-input" id="childRateInput" min="0" step="0.5">
-            <p class="field-error" id="childRateError" role="alert" hidden></p>
-          </div>
-
-          <div class="field-group">
-            <label class="field-label" for="teenAdultRateInput">פרוסות לנוער/מבוגר</label>
-            <input type="number" inputmode="decimal" class="rate-input" id="teenAdultRateInput" min="0" step="0.5">
-            <p class="field-error" id="teenAdultRateError" role="alert" hidden></p>
-          </div>
-
-          <button type="button" class="btn-link" id="resetRatesBtn">איפוס לברירת המחדל</button>
+        <div>
+          <dt>האם שתייה או תוספות מפחיתות את כמות הפיצה?</dt>
+          <dd>לא. רק מנה משביעה נוספת ומלאה (למשל פסטה) מפחיתה את הכמות המחושבת, כי בחרתם בה כארוחה חלופית חלקית.</dd>
         </div>
-      </details>
+        <div>
+          <dt>למה יש אפשרות להוסיף 10%?</dt>
+          <dd>זו בחירה שלכם לתכנון עם רזרבה, לא תוספת אוטומטית. ברירת המחדל כבויה.</dd>
+        </div>
+        <div>
+          <dt>מה קורה מעל 100 משתתפים?</dt>
+          <dd>המחשבון שומר את הקלט אך לא מציג המלצה אוטומטית — אירוע בסדר גודל כזה דורש תיאום ישיר מול העסק.</dd>
+        </div>
+      </dl>
     </section>
 
   </div>
 
-  <section class="info-section">
-    <h2>איך מחשבים את הכמות?</h2>
-    <p>מחשבים הערכת כמות לפי מספר המשתתפים והתיאבון, ומעגלים למגש שלם. גודל המגש משפיע; מספר החיתוכים לבדו לא.</p>
-
-    <h3>דוגמאות</h3>
-    <div class="examples-table-wrap">
-      <table class="examples-table" id="examplesTable">
-        <thead>
-          <tr><th scope="col">משתתפים</th><th scope="col">תיאבון</th><th scope="col">מגשים מומלצים</th></tr>
-        </thead>
-        <tbody id="examplesTableBody"></tbody>
-      </table>
+  <section class="closing" aria-labelledby="closingHeading">
+    <img class="closing-photo" src="images/hero-pizza.webp" width="1672" height="941" loading="lazy" decoding="async" alt="">
+    <div class="closing-inner wrap">
+      <h2 id="closingHeading">יש כמות. נשאר לסגור את הפינה.</h2>
+      <p>שולחים את התכנון בוואטסאפ ומקבלים הצעת מחיר ישירות מפיצה וירטואוז.</p>
+      <div class="closing-actions">
+        <a class="btn btn-primary" id="closingQuoteCta" href="#" target="_blank" rel="noopener">
+          <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat"/></svg>
+          <span class="btn-label">בקשת הצעת מחיר בוואטסאפ</span>
+        </a>
+        <a class="closing-phone" href="tel:039504888">או בטלפון: <bdi>03-9504888</bdi></a>
+      </div>
     </div>
-
-    <h3>שאלות נפוצות</h3>
-    <dl class="faq">
-      <dt>האם מספר החיתוכים במגש משנה את הכמות?</dt>
-      <dd>לא. חיתוך אותו מגש ל-8 או ל-16 חלקים לא מגדיל את כמות האוכל. גודל המגש הוא שקובע.</dd>
-
-      <dt>האם שתייה או תוספות מפחיתות את כמות הפיצה?</dt>
-      <dd>לא. רק מנה משביעה נוספת ומלאה (למשל פסטה) מפחיתה את הכמות המחושבת, כי בחרתם בה כארוחה חלופית חלקית.</dd>
-
-      <dt>למה יש אפשרות להוסיף 10%?</dt>
-      <dd>זו בחירה שלכם לתכנון עם רזרבה, לא תוספת אוטומטית. ברירת המחדל כבויה.</dd>
-
-      <dt>מה קורה מעל 100 משתתפים?</dt>
-      <dd>המחשבון שומר את הקלט אך לא מציג המלצה אוטומטית — אירוע בסדר גודל כזה דורש תיאום ישיר מול העסק.</dd>
-    </dl>
   </section>
 
-  <section class="info-section" id="accessibility-statement" aria-label="הצהרת נגישות">
-    <h2>הצהרת נגישות</h2>
-    <p>עודכן לאחרונה: 16 בספטמבר 2026.</p>
-    <p>
-      דף זה תוכנן ונבנה תוך הקפדה על עקרונות נגישות מבוססי
-      <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.0 ברמה AA,
-      העומדים בבסיס תקן ישראלי 5568. בין הפעולות שבוצעו:
-    </p>
-    <ul>
-      <li>תפעול מלא באמצעות מקלדת בלבד, ללא צורך בעכבר, לכל הפקדים והכפתורים.</li>
-      <li>תוויות טקסט לכל שדה וכפתור עבור קוראי מסך, כולל הכרזה על עדכון התוצאה (aria-live).</li>
-      <li>ניגודיות צבעים שנבדקה ונמדדה בפועל בין טקסט לרקע בכל מצבי התצוגה.</li>
-      <li>פריסה מלאה מימין לשמאל (RTL) בעברית, כולל סימני כיוון נכונים למספרים ולקישורים.</li>
-      <li>פריסה שנבדקה ונשארת שמישה וללא גלילה אופקית ברוחבי מסך צרים, כולל הגדלת תצוגה.</li>
-      <li>קישור דילוג לתוכן הראשי בתחילת העמוד.</li>
-      <li>כיבוד הגדרת "הפחתת תנועה" של מערכת ההפעלה — ללא אנימציות מיותרות למי שביקש זאת.</li>
-      <li>
-        תפריט נגישות חינמי (כפתור צף בפינת המסך) המאפשר התאמות תצוגה, גודל טקסט, ניגודיות, גופן
-        לדיסלקציה, הקראת תוכן וניווט מקלדת — אותו הכלי הפעיל גם באתר הראשי של פיצה וירטואוז.
-      </li>
-    </ul>
-    <p>
-      <strong>מגבלות ידועות:</strong> טרם בוצעה בדיקת נגישות פורמלית על ידי בודק נגישות מוסמך, וייתכנו
-      רכיבים שלא נבדקו במלואם מול טכנולוגיות מסייעות ותיקות. הצהרה זו תעודכן לאחר ביצוע בדיקה כזו.
-    </p>
-    <p>
-      נתקלתם בבעיית נגישות בדף זה, או זקוקים למידע שמופיע כאן בדרך חלופית? אפשר לפנות לפיצה וירטואוז
-      טלפונית: <a href="tel:039504888">03-9504888</a> או בוואטסאפ:
-      <a href="https://wa.me/972542537257" target="_blank" rel="noopener">054-2537257</a>.
-    </p>
-  </section>
+  <div class="wrap content">
+    <section class="info-section statement" id="accessibility-statement" aria-label="הצהרת נגישות">
+      <h2>הצהרת נגישות</h2>
+      <p>עודכן לאחרונה: 16 בספטמבר 2026.</p>
+      <p>
+        דף זה תוכנן ונבנה תוך הקפדה על עקרונות נגישות מבוססי
+        <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.0 ברמה AA,
+        העומדים בבסיס תקן ישראלי 5568. בין הפעולות שבוצעו:
+      </p>
+      <ul>
+        <li>תפעול מלא באמצעות מקלדת בלבד, ללא צורך בעכבר, לכל הפקדים והכפתורים.</li>
+        <li>תוויות טקסט לכל שדה וכפתור עבור קוראי מסך, כולל הכרזה על עדכון התוצאה (aria-live).</li>
+        <li>ניגודיות צבעים שנבדקה ונמדדה בפועל בין טקסט לרקע בכל מצבי התצוגה.</li>
+        <li>פריסה מלאה מימין לשמאל (RTL) בעברית, כולל סימני כיוון נכונים למספרים ולקישורים.</li>
+        <li>פריסה שנבדקה ונשארת שמישה וללא גלילה אופקית ברוחבי מסך צרים, כולל הגדלת תצוגה.</li>
+        <li>קישור דילוג לתוכן הראשי בתחילת העמוד.</li>
+        <li>כיבוד הגדרת "הפחתת תנועה" של מערכת ההפעלה — ללא אנימציות מיותרות למי שביקש זאת.</li>
+        <li>
+          תפריט נגישות חינמי (כפתור צף בפינת המסך) המאפשר התאמות תצוגה, גודל טקסט, ניגודיות, גופן
+          לדיסלקציה, הקראת תוכן וניווט מקלדת — אותו הכלי הפעיל גם באתר הראשי של פיצה וירטואוז.
+        </li>
+      </ul>
+      <p>
+        <strong>מגבלות ידועות:</strong> טרם בוצעה בדיקת נגישות פורמלית על ידי בודק נגישות מוסמך, וייתכנו
+        רכיבים שלא נבדקו במלואם מול טכנולוגיות מסייעות ותיקות. הצהרה זו תעודכן לאחר ביצוע בדיקה כזו.
+      </p>
+      <p>
+        נתקלתם בבעיית נגישות בדף זה, או זקוקים למידע שמופיע כאן בדרך חלופית? אפשר לפנות לפיצה וירטואוז
+        טלפונית: <a href="tel:039504888">03-9504888</a> או בוואטסאפ:
+        <a href="https://wa.me/972542537257" target="_blank" rel="noopener">054-2537257</a>.
+      </p>
+    </section>
+  </div>
 
 </main>
 
 <div class="sticky-bar" id="stickyBar" hidden>
-  <span class="sticky-count" id="stickyCount">7 מגשים</span>
-  <a class="btn btn-primary btn-sticky" id="stickyQuoteCta" href="#" target="_blank" rel="noopener">בקשת הצעה</a>
+  <button type="button" class="sticky-peek" id="stickyPeek" aria-label="חזרה לתוצאת החישוב">
+    <svg class="sticky-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pizza"/></svg>
+    <span class="sticky-text">
+      <span class="sticky-count" id="stickyCount">7 מגשים</span>
+      <span class="sticky-sub">ההמלצה שלנו</span>
+    </span>
+  </button>
+  <a class="btn btn-primary btn-sticky" id="stickyQuoteCta" href="#" target="_blank" rel="noopener">
+    <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat"/></svg>
+    <span class="btn-label">בקשת הצעה</span>
+  </a>
 </div>
 
 <footer class="site-footer">
