@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Hebrew RTL pizza-for-events calculator (MVP)",
   "scripts": {
-    "test": "node --test *.test.js"
+    "test": "node --test *.test.js",
+    "build:guides": "node build-guides.mjs"
   }
 }

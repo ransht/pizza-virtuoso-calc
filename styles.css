@@ -1903,3 +1903,65 @@ details[open] > summary .chev { transform: rotate(180deg); }
 /* No hero photo here, so the header sits in the flow on the light page. */
 .not-found-page .site-header { position: static; color: var(--color-text); }
 .not-found-page .header-kicker { color: var(--color-text-secondary); border-color: var(--color-border-strong); }
+
+/* ---------- quantity tables, tips and guide pages ---------- */
+
+.qty-table th[scope="row"] { font-weight: 500; white-space: nowrap; }
+
+.qty-table td {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.tips {
+  max-width: 44em;
+  margin: var(--space-2) 0 0;
+  padding-inline-start: 1.2em;
+}
+
+.tips li { margin-bottom: 10px; }
+.tips li::marker { color: var(--color-primary); }
+
+.guide-links {
+  list-style: none;
+  display: grid;
+  gap: var(--space-2);
+  margin: var(--space-2) 0 0;
+  padding: 0;
+}
+
+@media (min-width: 720px) {
+  .guide-links { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.guide-links a {
+  display: block;
+  height: 100%;
+  padding: 18px 20px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: border-color var(--motion-fast), transform var(--motion-fast);
+}
+
+.guide-links a:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+
+.guide-links strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--color-primary);
+}
+
+.guide-links span { font-size: 15px; color: var(--color-text-secondary); }
+
+.guide-actions { display: flex; margin-top: var(--space-3); }
+.guide-actions .btn { flex: none; background: var(--color-tomato); }
+.guide-actions .btn:hover { background: #B2311B; }
+
+a.header-kicker { color: var(--color-on-dark); text-decoration: none; min-height: 32px; display: inline-flex; align-items: center; }
+a.header-kicker:hover { border-color: var(--color-on-dark); }
+
+.guide-page .info-section p:not(.lead):not(.section-kicker) { max-width: 44em; }

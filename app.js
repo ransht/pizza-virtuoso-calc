@@ -113,7 +113,6 @@ const refs = {
   stickyBar: el("stickyBar"),
   stickyCount: el("stickyCount"),
   stickyQuoteCta: el("stickyQuoteCta"),
-  examplesTableBody: el("examplesTableBody"),
   activePlanChip: el("activePlanChip"),
   storageUnavailableNotice: el("storageUnavailableNotice"),
   savePlanForm: el("savePlanForm"),
@@ -1003,17 +1002,6 @@ document.addEventListener("click", (e) => {
   input.classList.add("is-ticked");
 });
 
-// ---------- examples table ----------
-function renderExamplesTable() {
-  const counts = [10, 20, 30, 40];
-  refs.examplesTableBody.innerHTML = counts
-    .map((n) => {
-      const r = calculatePizzas({ children: n, appetite: "normal", servingUnitsPerPizza: CONFIG.product.servingUnitsPerPizza });
-      return `<tr><td>${n} משתתפים</td><td>רגיל</td><td>${r.pizzas} מגשים</td></tr>`;
-    })
-    .join("");
-}
-
 // ---------- boot ----------
 // A URL that differs only by its fragment does not reload the page or
 // re-run this module (browsers fire `hashchange` instead), so a shared link
@@ -1070,7 +1058,6 @@ function boot() {
   el("rateChild").textContent = String(CHILD_UNITS);
   el("rateAdult").textContent = String(TEEN_ADULT_UNITS);
   el("rateTray").textContent = String(CONFIG.product.servingUnitsPerPizza);
-  renderExamplesTable();
   renderSavedPlans();
   applyLocationState(true);
   initAnalyticsConsent();

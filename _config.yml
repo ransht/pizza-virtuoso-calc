@@ -4,5 +4,6 @@ exclude:
   - DESIGN.md
   - BUILD_PROMPT.md
   - serve.js
+  - build-guides.mjs
   - package.json
   - "*.test.js"

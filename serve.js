@@ -22,7 +22,8 @@ const TYPES = {
 
 http
   .createServer(async (req, res) => {
-    let filePath = req.url === "/" ? "/index.html" : req.url.split("?")[0];
+    let filePath = req.url.split("?")[0];
+    if (filePath.endsWith("/")) filePath += "index.html";
     filePath = path.join(root, decodeURIComponent(filePath));
     try {
       const data = await readFile(filePath);
