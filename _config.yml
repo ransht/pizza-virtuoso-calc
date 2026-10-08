@@ -1,0 +1,8 @@
+# GitHub Pages serves the repository root; keep internal docs, tests and the
+# local preview server out of the published site.
+exclude:
+  - DESIGN.md
+  - BUILD_PROMPT.md
+  - serve.js
+  - package.json
+  - "*.test.js"

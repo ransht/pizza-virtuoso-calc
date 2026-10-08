@@ -10,6 +10,7 @@ import {
 import { buildCombos, formatCombo, FLAVORS } from "./combos.js";
 import { createTrayViz, createCounter } from "./visuals.js";
 import { CONFIG } from "./config.js";
+import { track, initAnalyticsConsent } from "./analytics.js";
 import {
   savePlan,
   listPlans,
@@ -22,12 +23,6 @@ import {
 
 function toWhatsAppNumber(localPhone) {
   return localPhone.replace(/^0/, "972");
-}
-
-// ---------- analytics stub ----------
-function track(name, payload = {}) {
-  console.debug("[track]", name, payload);
-  if (window.dataLayer) window.dataLayer.push({ event: name, ...payload });
 }
 
 // ---------- event-type copy ----------
@@ -1078,6 +1073,7 @@ function boot() {
   renderExamplesTable();
   renderSavedPlans();
   applyLocationState(true);
+  initAnalyticsConsent();
   track("calculator_view", {});
 }
 

@@ -11,8 +11,11 @@ export const CONFIG = {
   orderUrl: "https://order.pizzavirtuoso.co.il",
   serviceAreas: ["ראשון לציון"],
   address: "ז׳בוטינסקי 16, ראשון לציון (מול היכל התרבות)",
-  openingHours: "ראשון–חמישי, 17:00–23:00",
+  openingHours: "ראשון–חמישי, 17:00–23:30",
   restaurantPhone: "03-9504888",
+
+  // Same GA4 property as pizzavirtuoso.co.il; loaded only after consent.
+  analyticsId: "G-ECSLPEJEB6",
 
   // Direct WhatsApp line for event/catering price-quote requests (not the
   // general restaurant landline above). Contact name is used in the message.

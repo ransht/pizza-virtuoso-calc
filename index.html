@@ -8,7 +8,10 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://calc.pizzavirtuoso.co.il/">
 <meta name="theme-color" content="#1c1714">
+<link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="preload" as="image" href="images/hero-pizza.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,18 +24,21 @@
 <meta property="og:url" content="https://calc.pizzavirtuoso.co.il/">
 <meta property="og:title" content="מחשבון פיצה — כמה מגשים להזמין ליום הולדת ולמסיבה?">
 <meta property="og:description" content="מחשבים כמות פיצה לפי ילדים, מבוגרים ותיאבון, ומקבלים הצעת מחיר מפיצה וירטואוז בוואטסאפ.">
-<meta property="og:image" content="https://calc.pizzavirtuoso.co.il/images/hero-pizza.webp">
-<meta property="og:image:width" content="1672">
-<meta property="og:image:height" content="941">
+<meta property="og:image" content="https://calc.pizzavirtuoso.co.il/images/og-pizza-calc.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="פיצה טרייה ליד תנור חם — מחשבון הפיצה של פיצה וירטואוז">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="מחשבון פיצה — כמה מגשים להזמין ליום הולדת ולמסיבה?">
 <meta name="twitter:description" content="מחשבים כמות פיצה לפי ילדים, מבוגרים ותיאבון, ומקבלים הצעת מחיר מפיצה וירטואוז בוואטסאפ.">
-<meta name="twitter:image" content="https://calc.pizzavirtuoso.co.il/images/hero-pizza.webp">
+<meta name="twitter:image" content="https://calc.pizzavirtuoso.co.il/images/og-pizza-calc.jpg">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Restaurant",
+  "@id": "https://pizzavirtuoso.co.il/#restaurant",
   "name": "פיצה וירטואוז",
   "url": "https://pizzavirtuoso.co.il",
   "image": "https://pizzavirtuoso.co.il/images/hero-pizza.webp",
@@ -48,7 +54,7 @@
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
     "opens": "17:00",
-    "closes": "23:00"
+    "closes": "23:30"
   }
 }
 </script>
@@ -62,7 +68,7 @@
   "operatingSystem": "Any",
   "isAccessibleForFree": true,
   "description": "כלי חינמי לחישוב כמות מגשי פיצה לפי מספר ילדים, מבוגרים ותיאבון — ליום הולדת, מסיבת כיתה או אירוע משרדי.",
-  "provider": { "@type": "Restaurant", "name": "פיצה וירטואוז", "url": "https://pizzavirtuoso.co.il" }
+  "provider": { "@id": "https://pizzavirtuoso.co.il/#restaurant" }
 }
 </script>
 <script type="application/ld+json">
@@ -70,6 +76,21 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "כמה מגשי פיצה צריך ל-20 ילדים?",
+      "acceptedAnswer": { "@type": "Answer", "text": "בתיאבון רגיל מחשבים 2 פרוסות לילד, כלומר 40 פרוסות — 5 מגשים של 8 פרוסות. אם מצטרפים 4 מלווים מבוגרים, הכמות עולה ל-7 מגשים." }
+    },
+    {
+      "@type": "Question",
+      "name": "כמה משולשי פיצה אוכל ילד?",
+      "acceptedAnswer": { "@type": "Answer", "text": "בתיאבון רגיל: כ-2 משולשים לילד בגיל בית ספר, כ-1.5 לילד בגיל 3–6, וכ-3 לנוער ולמבוגרים." }
+    },
+    {
+      "@type": "Question",
+      "name": "כמה פיצות להזמין למסיבת כיתה של 30 ילדים?",
+      "acceptedAnswer": { "@type": "Answer", "text": "ל-30 ילדים בתיאבון רגיל צריך 60 פרוסות, כלומר 8 מגשים. אם מגיעים גם הורים או צוות, מוסיפים אותם במחשבון כנוער ומבוגרים." }
+    },
     {
       "@type": "Question",
       "name": "האם מספר החיתוכים במגש משנה את הכמות?",
@@ -442,6 +463,18 @@
       <h3 class="faq-heading">שאלות נפוצות</h3>
       <dl class="faq">
         <div>
+          <dt>כמה מגשי פיצה צריך ל-20 ילדים?</dt>
+          <dd>בתיאבון רגיל מחשבים 2 פרוסות לילד, כלומר 40 פרוסות — 5 מגשים של 8 פרוסות. אם מצטרפים 4 מלווים מבוגרים, הכמות עולה ל-7 מגשים.</dd>
+        </div>
+        <div>
+          <dt>כמה משולשי פיצה אוכל ילד?</dt>
+          <dd>בתיאבון רגיל: כ-2 משולשים לילד בגיל בית ספר, כ-1.5 לילד בגיל 3–6, וכ-3 לנוער ולמבוגרים.</dd>
+        </div>
+        <div>
+          <dt>כמה פיצות להזמין למסיבת כיתה של 30 ילדים?</dt>
+          <dd>ל-30 ילדים בתיאבון רגיל צריך 60 פרוסות, כלומר 8 מגשים. אם מגיעים גם הורים או צוות, מוסיפים אותם במחשבון כנוער ומבוגרים.</dd>
+        </div>
+        <div>
           <dt>האם מספר החיתוכים במגש משנה את הכמות?</dt>
           <dd>לא. חיתוך אותו מגש ל-8 או ל-16 חלקים לא מגדיל את כמות האוכל. גודל המגש הוא שקובע.</dd>
         </div>
@@ -513,6 +546,17 @@
 
 </main>
 
+<div class="analytics-consent" id="analyticsConsent" role="region" aria-labelledby="analyticsConsentTitle" hidden>
+  <div class="analytics-consent-copy">
+    <strong id="analyticsConsentTitle">עוגיות ומדידת שימוש</strong>
+    <p>בהסכמתכם, נשתמש ב-Google Analytics כדי להבין כיצד משתמשים במחשבון ולשפר אותו. אפשר לסרב ולהמשיך להשתמש בו כרגיל.</p>
+  </div>
+  <div class="analytics-consent-actions">
+    <button type="button" class="consent-btn consent-btn-accept" id="analyticsAccept">מאשר/ת</button>
+    <button type="button" class="consent-btn" id="analyticsReject">לא תודה</button>
+  </div>
+</div>
+
 <div class="sticky-bar" id="stickyBar" hidden>
   <button type="button" class="sticky-peek" id="stickyPeek" aria-label="חזרה לתוצאת החישוב">
     <svg class="sticky-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pizza"/></svg>
@@ -536,6 +580,10 @@
     <a href="https://order.pizzavirtuoso.co.il" target="_blank" rel="noopener">מערכת ההזמנות</a>
     ·
     <a href="#accessibility-statement">הצהרת נגישות</a>
+    <span id="analyticsSettings" hidden>
+      ·
+      <button type="button" class="footer-link-btn">הגדרות פרטיות</button>
+    </span>
   </p>
 </footer>
 
