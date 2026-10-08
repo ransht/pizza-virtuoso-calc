@@ -208,10 +208,11 @@ function page(guide) {
 <link rel="icon" href="/logo.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
-<link rel="preload" as="image" href="/images/hero-pizza.webp" fetchpriority="high">
+<link rel="preload" as="image" href="/images/hero-pizza.webp" imagesrcset="/images/hero-pizza-800.webp 800w, /images/hero-pizza.webp 1672w" imagesizes="100vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;900&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;900&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;900&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/styles.css">
 
 <meta property="og:type" content="article">
@@ -255,7 +256,7 @@ ${jsonLd({
 <main id="main-content">
 
   <section class="intro">
-    <img class="intro-photo" src="/images/hero-pizza.webp" width="1672" height="941" fetchpriority="high" decoding="async" alt="">
+    <img class="intro-photo" src="/images/hero-pizza.webp" srcset="/images/hero-pizza-800.webp 800w, /images/hero-pizza.webp 1672w" sizes="100vw" width="1672" height="941" fetchpriority="high" decoding="async" alt="">
     <div class="intro-text wrap">
       <p class="intro-kicker">${guide.kicker}</p>
       <h1>${guide.h1}</h1>
@@ -286,7 +287,7 @@ ${others.map((g) => `        <li><a href="/${g.slug}/"><strong>${g.nav}</strong>
   </div>
 
   <section class="closing" aria-labelledby="closingHeading">
-    <img class="closing-photo" src="/images/hero-pizza.webp" width="1672" height="941" loading="lazy" decoding="async" alt="">
+    <img class="closing-photo" src="/images/hero-pizza.webp" srcset="/images/hero-pizza-800.webp 800w, /images/hero-pizza.webp 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="">
     <div class="closing-inner wrap">
       <h2 id="closingHeading">יש כמות. נשאר לסגור את הפינה.</h2>
       <p>שולחים הודעה בוואטסאפ ומקבלים הצעת מחיר ישירות מ${CONFIG.brandName}.</p>
